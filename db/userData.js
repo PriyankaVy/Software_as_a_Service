@@ -53,6 +53,14 @@ const users = [
         description: "MS CS Student..",
         email: "khan@gmail.com",
         password: "khan012"
+    },
+    {
+        user_id: 5,
+        username: "Maran",
+        fullname: "Ilamaran",
+        description: "MS CS Student..",
+        email: "ila@gmail.com",
+        password: "ila123"
     }
 ];
 
