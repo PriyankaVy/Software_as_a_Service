@@ -182,6 +182,68 @@ const posts = [
         likes: 2,
         dislikes: 1
     },
+    {
+        author_id: 1,
+        title: "Elon Musk says work from home is 'bull**it' and 'morally wrong'",
+        content: "Elon Musk has thoughts about work from home. Many, many thoughts.The CEO of Tesla, SpaceX, and Twitter shared them all in an interview with CNBC, leaving no doubt as to where his stance on working from home is.I'm a big believer that people are more productive when they're in person, said Musk, before bringing Marie Antoinette, the last queen of France, into the discussion.The whole notion of work from home is a bit like the fake Marie Antoinette quote, let them eat cake. It's like, really? You're gonna work from home, and you're gonna make everyone else, who made you car, come work in the factory (...) the people that come fix your house, they can't work from home, but you can? Does that seem morally right? That's messed up,said Musk.Each person’s perception of art differs, and there is no one-size-fits-all approach to art appreciation. It is a good idea to start with art books or magazines. Every year, art galleries and museums across the country offer free or reduced-price admission to a variety of art exhibitions. People argue that visual art is a type of art that combines the creative process with an appreciation for beauty and order. Visual art, in some ways, can be thought of as pieces that are intended to provoke the viewer’s interest. One of the drawbacks of online art appreciation is that there aren’t many online platforms that provide access to galleries, the ability to communicate with artists, and the ability to support and advocate for artists. Individual decision: What level of art is difficult for an individual to achieve?The following factors should be considered in order for you to consider whether or not history of art is an easy A level topic to learn. Students can learn about and appreciate the art form through a variety of online resources. Depending on your level of art appreciation and experience, you may need to adapt your methods. Reading art reviews, watching art videos, and taking part in art discussion boards are just a few examples of popular ways to engage in art discussion. You can improve your critical thinking skills and learn about art history if you become more interested in art. Learning how to appreciate online art will vary depending on one’s level of education and art knowledge. In addition to studying art history, finding online art resources, and attending art events, you can also attend art shows.",
+        post_id: 2,
+        category: "Business",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "Google will delete inactive accounts this yearElon Musk says work from home is 'bull**it' and 'morally wrong'",
+        content: "If an account hasn’t been used for an extended period of time, it is more likely to be compromised,Google said in a statement(opens in a new tab).This is because forgotten or unattended accounts often rely on old or re-used passwords that may have been compromised, haven't had two factor authentication set up, and receive fewer security checks by the user.Starting in December, Google may delete an account if it hasn't been used or logged-into during the last two years. That means it would wipe everything in the account, including content within Google Workspace (Gmail, Docs, Drive, Meet, Calendar), YouTube, and Google Photos.SEE ALSO: All the AI announcements from Google I/O 2023, art galleries and museums across the country offer free or reduced-price admission  and experience, you may need to adapt your methods. Reading art reviews, watching art videos, and taking part in art discussion boards are just a few examples of popular ways to engage in art discussion. You can improve your critical thinking skills and learn about art history if you become more interested in art. Learning how to appreciate online art will vary depending on one’s level of education and art knowledge. In addition to studying art history, finding online art resources, and attending art events, you can also attend art shows.",
+        post_id: 2,
+        category: "Business",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "We may already know who Twitter's new CEO is",
+        content: "Elon Musk has thoughts about work from home. Many, many thoughts.The CEO of Tesla, SpaceX, and Twitter shared them all in an interview with CNBC, leaving no doubt as to where his stance on working from home is.I'm a big believer that people are more productive when they're in person, said Musk, before bringing Marie Antoinette, the last queen of France, into the discussion.The whole notion of work from home is a bit like the fake Marie Antoinette quote, let them eat cake. It's like, really? You're gonna work from home, and you're gonna make everyone else, who made you car, come work in the factory (...) the people that come fix your house, they can't work from home, but you can? Does that seem morally right? That's messed up,said Musk.Each person’s perception of art differs, and there is no one-size-fits-all approach to art appreciation. It is a good idea to start with art books or magazines. Every year, art galleries and museums across the country offer free or reduced-price admission to a variety of art exhibitions. People argue that visual art is a type of art that combines the creative process with an appreciation for beauty and order. Visual art, in some ways, can be thought of as pieces that are intended to provoke the viewer’s interest. One of the drawbacks of online art appreciation is that there aren’t many online platforms that provide access to galleries, the ability to communicate with artists, and the ability to support and advocate for artists. Individual decision: What level of art is difficult for an individual to achieve?The following factors should be considered in order for you to consider whether or not history of art is an easy A level topic to learn. Students can learn about and appreciate the art form through a variety of online resources. Depending on your level of art appreciation and experience, you may need to adapt your methods. Reading art reviews, watching art videos, and taking part in art discussion boards are just a few examples of popular ways to engage in art discussion. You can improve your critical thinking skills and learn about art history if you become more interested in art. Learning how to appreciate online art will vary depending on one’s level of education and art knowledge. In addition to studying art history, finding online art resources, and attending art events, you can also attend art shows.",
+        post_id: 2,
+        category: "Business",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "This Google AI keynote could have been a Gmail may already know who Twitter's new CEO is",
+        content: "Elon Musk has thoughts about work from home. Many, many thoughts.The CEO of Tesla, SpaceX, and Twitter shared them all in an interview with CNBC, leaving no doubt as to where his stance on working from home is.I'm a big believer that people are more productive when they're in person, said Musk, before bringing Marie Antoinette, the last queen of France, into the discussion.The whole notion of work from home is a bit like the fake Marie Antoinette quote, let them eat cake. It's like, really? You're gonna work from home, and you're gonna make everyone else, who made you car, come work in the factory (...) the people that come fix your house, they can't work from home, but you can? Does that seem morally right? That's messed up,said Musk.Each person’s perception of art differs, and there is no one-size-fits-all approach to art appreciation. It is a good idea to start with art books or magazines. Every year, art galleries and museums across the country offer free or reduced-price admission to a variety of art exhibitions. People argue that visual art is a type of art that combines the creative process with an appreciation for beauty and order. Visual art, in some ways, can be thought of as pieces that are intended to provoke the viewer’s interest. One of the drawbacks of online art appreciation is that there aren’t many online platforms that provide access to galleries, the ability to communicate with artists, and the ability to support and advocate for artists. Individual decision: What level of art is difficult for an individual to achieve?The following factors should be considered in order for you to consider whether or not history of art is an easy A level topic to learn. Students can learn about and appreciate the art form through a variety of online resources. Depending on your level of art appreciation and experience, you may need to adapt your methods. Reading art reviews, watching art videos, and taking part in art discussion boards are just a few examples of popular ways to engage in art discussion. You can improve your critical thinking skills and learn about art history if you become more interested in art. Learning how to appreciate online art will vary depending on one’s level of education and art knowledge. In addition to studying art history, finding online art resources, and attending art events, you can also attend art shows.",
+        post_id: 2,
+        category: "Business",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "Peugeot’s “Inception” concept car introduces electronic steering — Future Blink Google AI keynote could have been a Gmail may already know who Twitter's new CEO is",
+        content: "Elon Musk has thoughts about work from home. Many, many thoughts.The CEO of Tesla, SpaceX, and Twitter shared them all in an interview with CNBC, leaving no doubt as to where his stance on working from home is.I'm a big believer that people are more productive when they're in person, said Musk, before bringing Marie Antoinette, the last queen of France, into the discussion.The whole notion of work from home is a bit like the fake Marie Antoinette quote, let them eat cake. It's like, really? You're gonna work from home, and you're gonna make everyone else, who made you car, come work in the factory (...) the people that come fix your house, they can't work from home, but you can? Does that seem morally right? That's messed up,said Musk.Each person’s perception of art differs, and there is no one-size-fits-all approach to art appreciation. It is a good idea to start with art books or magazines. Every year, art galleries and museums across the country offer free or reduced-price admission to a variety of art exhibitions. People argue that visual art is a type of art that combines the creative process with an appreciation for beauty and order. Visual art, in some ways, can be thought of as pieces that are intended to provoke the viewer’s interest. One of the drawbacks of online art appreciation is that there aren’t many online platforms that provide access to galleries, the ability to communicate with artists, and the ability to support and advocate for artists. Individual decision: What level of art is difficult for an individual to achieve?The following factors should be considered in order for you to consider whether or not history of art is an easy A level topic to learn. Students can learn about and appreciate the art form through a variety of online resources. Depending on your level of art appreciation and experience, you may need to adapt your methods. Reading art reviews, watching art videos, and taking part in art discussion boards are just a few examples of popular ways to engage in art discussion. You can improve your critical thinking skills and learn about art history if you become more interested in art. Learning how to appreciate online art will vary depending on one’s level of education and art knowledge. In addition to studying art history, finding online art resources, and attending art events, you can also attend art shows.",
+        post_id: 2,
+        category: "Business",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+
+
 ];
 
 // Insert sample data into users collection
