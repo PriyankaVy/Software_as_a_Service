@@ -30,7 +30,7 @@ const posts = [
         author_id: 2,
         title: "Express",
         content: "Backend Technology",
-        post_id: 1,
+        post_id: 3,
         category: "Technology",
         publication_date: "2023-04-11",
         featured: false,

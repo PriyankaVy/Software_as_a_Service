@@ -15,6 +15,20 @@ router.get('/blogPosts', async (req, res) => {
     }
 });
 
+// GET a single BlogPost document by ID
+router.get('/blogPosts/:post_id', async (req, res) => {
+    try {
+      const post_id = req.params.post_id
+      const post = await MyBlogPost.findOne({ post_id });
+      if (post == null) {
+        return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
+      }
+      res.json(post);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
 // CREATE a new BlogPost document
 router.post('/blogPosts', async (req, res) => {
     const myBlogPost = new MyBlogPost({
@@ -38,5 +52,42 @@ router.post('/blogPosts', async (req, res) => {
     }
 });
 
+// UPDATE a BlogPost document
+router.put('/blogPosts/:post_id', async (req, res) => {
+  const post_id = req.params.post_id
+  const myBlogPost = await MyBlogPost.findOne({ post_id });
+  if (myBlogPost == null) {
+      return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
+  }
+
+  myBlogPost.author_id = req.body.author_id;
+  myBlogPost.title = req.body.title;
+  myBlogPost.content = req.body.content;
+  myBlogPost.post_id = req.body.post_id;
+  myBlogPost.category = req.body.category;
+  myBlogPost.publication_date = req.body.publication_date;
+  myBlogPost.featured = req.body.featured;
+  myBlogPost.views = req.body.views;
+  myBlogPost.likes = req.body.likes;
+  myBlogPost.dislikes = req.body.dislikes;
+
+  try {
+      await myBlogPost.save();
+      res.status(200).json(myBlogPost);
+  } catch (err) {
+      res.status(400).json({ message: err.message });
+  }
+});
+
+// DELETE a BlogPost document
+router.delete('/blogPosts/:post_id', async (req, res) => {
+  const post_id = req.params.post_id
+  const myBlogPost = await MyBlogPost.findOne({post_id});
+  if (myBlogPost == null) {
+      return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
+  }
+  await myBlogPost.deleteOne({post_id});
+  res.status(200).json({ message: 'Post deleted successfully' });
+});
 
 module.exports = router;
