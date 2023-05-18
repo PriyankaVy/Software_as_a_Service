@@ -20,6 +20,7 @@ class BlogPostModel {
         this.schema = new Mongoose.Schema(
             {
                 author_id: Number,
+                url: String,
                 title: String,
                 content: String,
                 post_id: Number,

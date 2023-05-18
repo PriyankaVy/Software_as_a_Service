@@ -69,7 +69,7 @@ const posts = [
         post_id: 2,
         category: "Education",
         publication_date: "2023-05-14",
-        featured: false,
+        featured: true,
         views: 5,
         likes: 2,
         dislikes: 1
@@ -93,7 +93,7 @@ const posts = [
         post_id: 2,
         category: "Education",
         publication_date: "2023-05-14",
-        featured: false,
+        featured: true,
         views: 5,
         likes: 2,
         dislikes: 1
@@ -153,7 +153,7 @@ const posts = [
         post_id: 4,
         category: "Arts",
         publication_date: "2023-05-14",
-        featured: false,
+        featured: true,
         views: 5,
         likes: 2,
         dislikes: 1

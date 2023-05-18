@@ -2,6 +2,7 @@ import Mongoose = require("mongoose");
 
 interface IBlogPost extends Mongoose.Document {
     author_id: number;
+    url: string;
     title: string;
     content: string;
     post_id: number;

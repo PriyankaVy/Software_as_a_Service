@@ -61,8 +61,8 @@ router.get('/blogPosts', function (req, res) { return __awaiter(void 0, void 0, 
         }
     });
 }); });
-// GET a single BlogPost document by ID
-router.get('/blogPosts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+// GET a single VlogPost document by ID
+router.get('/blogPosts/posts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var post_id, post, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -85,14 +85,39 @@ router.get('/blogPosts/:post_id', function (req, res) { return __awaiter(void 0,
         }
     });
 }); });
+// GET a single BlogPost document by ID
+router.get('/blogPosts/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var title, post, err_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                title = req.params.title;
+                return [4 /*yield*/, MyBlogPost.findOne({ title: title })];
+            case 1:
+                post = _a.sent();
+                if (post == null) {
+                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with this title' })];
+                }
+                res.json(post);
+                return [3 /*break*/, 3];
+            case 2:
+                err_3 = _a.sent();
+                res.status(500).json({ message: err_3.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 // CREATE a new BlogPost document
 router.post('/blogPosts', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var myBlogPost, newMyPost, err_3;
+    var myBlogPost, newMyPost, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 myBlogPost = new MyBlogPost({
                     author_id: req.body.author_id,
+                    url: req.body.url,
                     title: req.body.title,
                     content: req.body.content,
                     post_id: req.body.post_id,
@@ -112,8 +137,8 @@ router.post('/blogPosts', function (req, res) { return __awaiter(void 0, void 0,
                 res.status(201).json(newMyPost);
                 return [3 /*break*/, 4];
             case 3:
-                err_3 = _a.sent();
-                res.status(400).json({ message: err_3.message });
+                err_4 = _a.sent();
+                res.status(400).json({ message: err_4.message });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
@@ -121,7 +146,7 @@ router.post('/blogPosts', function (req, res) { return __awaiter(void 0, void 0,
 }); });
 // UPDATE a BlogPost document
 router.put('/blogPosts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var post_id, myBlogPost, err_4;
+    var post_id, myBlogPost, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -151,8 +176,8 @@ router.put('/blogPosts/:post_id', function (req, res) { return __awaiter(void 0,
                 res.status(200).json(myBlogPost);
                 return [3 /*break*/, 5];
             case 4:
-                err_4 = _a.sent();
-                res.status(400).json({ message: err_4.message });
+                err_5 = _a.sent();
+                res.status(400).json({ message: err_5.message });
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
         }

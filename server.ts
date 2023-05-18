@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Import the routes
 const userRouter = require('./routes/users');
@@ -9,6 +10,7 @@ const vpostRouter = require('./routes/vlogPosts');
 
 // Use the routes
 app.use(express.json()); // Enable JSON parsing middleware
+app.use(cors());
 app.use('/', userRouter );
 app.use('/', bpostRouter); 
 app.use('/', vpostRouter);  

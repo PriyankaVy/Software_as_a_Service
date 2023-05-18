@@ -55,7 +55,7 @@ describe('Test single Blog Post result', function () {
     var resp;
 
     before(function (done) {
-        chai.request("http://localhost:8080").get("/blogPosts/1").end(function (err, res) {
+        chai.request("http://localhost:8080").get("/blogPosts/posts/1").end(function (err, res) {
             req = res.body;
             resp = res;
             expect(err).to.be.null;

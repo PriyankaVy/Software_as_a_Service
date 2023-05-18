@@ -15,24 +15,40 @@ router.get('/blogPosts', async (req, res) => {
     }
 });
 
-// GET a single BlogPost document by ID
-router.get('/blogPosts/:post_id', async (req, res) => {
-    try {
-      const post_id = req.params.post_id
-      const post = await MyBlogPost.findOne({ post_id });
-      if (post == null) {
-        return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
-      }
-      res.json(post);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
+// GET a single VlogPost document by ID
+router.get('/blogPosts/posts/:post_id', async (req, res) => {
+  try {
+    const post_id = req.params.post_id
+    const post = await MyBlogPost.findOne({ post_id });
+    if (post == null) {
+      return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
     }
-  });
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// GET a single BlogPost document by ID
+router.get('/blogPosts/:title', async (req, res) => {
+  try {
+    const title = req.params.title
+    const post = await MyBlogPost.findOne({ title:title });
+    if (post == null) {
+      return res.status(404).json({ message: 'Cannot find post document with this title' });
+    }
+    res.json(post);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 
 // CREATE a new BlogPost document
 router.post('/blogPosts', async (req, res) => {
     const myBlogPost = new MyBlogPost({
         author_id: req.body.author_id,
+        url: req.body.url,
         title: req.body.title,
         content: req.body.content,
         post_id: req.body.post_id,
