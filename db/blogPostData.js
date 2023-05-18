@@ -134,6 +134,54 @@ const posts = [
         likes: 2,
         dislikes: 1
     },
+    {
+        author_id: 1,
+        title: "Unique Reasons Why I Love the Magic Kingdom",
+        content: "When Walt Disney World is mentioned, the image that comes to mind is likely Cinderella Castle in the iconic Magic Kingdom. The first Park at Disney World Resort opened in 1971, so it’s hard not to fall in love with this Disney original. It is no accident that Magic Kingdom Park draws millions of visitors annually and is the picture of the American family vacation.After all, even popular sitcoms have taken their characters to Magic Kingdom on a Disney vacation over the years. The Magic Kingdom is so much more than a theme Park; it truly transports Guests into another world. From chowing down on a Dole Whip or visiting Tom Sawyer Island to riding Walt Disney’s Carousel of Progress, a day in Magic Kingdom Park is unmatched. But some reasons I love Disney’s Magic Kingdom may seem a bit odd. Here are some unique reasons why I love the Magic Kingxploring Ariel’s grotto or blowing through Pooh’s ride on a “very blustery day” allow Guests the opportunity to become part of the story and get to know their favorite characters in a new way. The Magic Kingdom takes Walt Disney movie memories to a new dimension for children and adults in the storybook rides. Soar with Peter Pan or ride the skies of Agrabah with Aladdin on The Magic Carpets Iconic Photo-OWe know you want that perfect Instagram photo on vacation. Who doesn’t love the photo opportunities at the Magic Kingdom?! Castle photos, character meets, and of course, photos with a smoked turkey leg, Dole Whip or Mickey Premium Ice Cream Bar are must-have Magic Kingdom photos.s your family part of a Disney Dynasty? If so, why not remember the magic of previous trips by recreating photos? Recreating family photos at the Magic Kingdom is always a fun way to update family albums and create more fun memories. Don’t forget about the iconic spots or poses in the Park. The Purple Wall, entrances to each land, wishing well near Cinderella Castle, or holding a Mickey balloon on Main Street, U.S.A., are all great ideas for that perfect picture!Magic Kingdom’s theming is incredible. Unlike other famous theme parks, details like Cast Member costuming immerse Guests in theming and stories. Every decision in Magic Kingdom was made deliberately, from the varying costumes of Cast Members across the Park and rides to the themed menus throughout the Park restaurants. The placement of each of the Park sectors is perfect for traffic flow, and seamless theming changes keep the magic flowing as Guests roam the Park.",
+        post_id: 2,
+        category: "Arts",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "Like a Thief in the Night: Massive Piece of Cinderella Castle Missing",
+        content: "Guests arriving at Magic Kingdom Park this week were shocked to discover a huge piece of Cinderella Castle missing, as if it had been taken by a thief in the middle of the night after Guests left for the evening. It’s a new week, and that means lots of Guests are just kicking off their spring vacations at the Walt Disney World Resort. Regular visitors to the Central Florida parks often celebrate the tradition of visiting a certain park on the first day of all of their trips, and for many, that park is Magic Kingdom.No one really knows why, as the reasons for choosing Magic Kingdom as the first-day park are as different as the Guests who walk through the gates of Disney World’s oldest park. Maybe it’s the excitement of the rides inspired by many of Disney’s classic animated films and the nostalgia Guests feel when they board their favorite classic attraction. Perhaps it’s the excitement of Main Street, U. S. A. that beckons Guests from the moment they pass through the tunnels at the Walt Disney World Railroad station. And maybe, just maybe, it’s simply the lure of Cinderella Castle herself. The most iconic structure in all of Disney World’s four theme parks–Magic Kingdom Park, EPCOT, Disney’s Hollywood Studios, and Disney’s Animal Kingdom–has a magic all her own. Though Cinderella Castle has endured several dress-ups and facelifts over her 50+ years, she remains constant, steadfast, and Guests can trust that every time they visit Magic Kingdom, Cinderella Castle–with her pink towers and brilliantly blue turrets will be there to serve as the backdrop for marriage proposals, family photos, and any number of magical moments in the park. This week, however, many have noticed something missing, something undeniably different and concerning, at the ever-constant castle. When Guests arrived in the park earlier this week, they noticed a huge piece of the castle missing, and if they didn’t know any better, they might have been sure the missing piece was swiped by a thief–perhaps a self-proclaimed Disney Parks super fan. But alas, such was not the case, though the missing piece is glaringly obvious.",
+        post_id: 2,
+        category: "Arts",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "DIVERSITY IN THE ART WORLD: WHERE ARE WE AT NOW AND WHAT’S BEING DONE?",
+        content: "As long as the art world has been bastion for self-expression and radical system-challenging, the structures that make it up have often been exclusionary and narrow-minded. Part of the work of the current fight against injustice is to examine the country’s most enduring fixtures- like art museums- and force the systemic hang-ups that’s baked into them to bubble up to the surface. The question of diversity isn’t a new one in the art world, but in the current moment, these conversations have made themselves urgent, and the numbers are still disturbingly grim.In March 2019 a group of researchers published a study at the Public Library of Science that surveyed eighteen of the most respected museums in America (like LACMA and the Met), and found that work by Black artists only made up 1.2 percent of their collections despite making up 13 percent of the population, according to the 2019 census. Works by Asian artists only totaled 9 percent of the collections, and Hispanic and Latinx artists only about 3 percent, despite comprising 18 percent of the population. It is worth noting that this study relies on public information about artists, and while the data was peer reviewed, racial and ethnic identity is often personal, thus not always accurately guessable. In any case, the numbers show marked lack of progress when it comes to representation. The National Endowment for the Arts’ 2019 study, “Artists and Other Cultural Workers: A Statistical Portrait,” also provided a comprehensive picture of what working in the art world looks like. They uncovered that from 2012 to 2016, non-white or Hispanic made up nearly 36 percent of the U.S. workforce, but only 25 percent of the artist workforce.",
+        post_id: 2,
+        category: "Arts",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
+    {
+        author_id: 1,
+        title: "Can Art Appreciation Be Taught? 5 Tips That Can Help",
+        content: "Each person’s perception of art differs, and there is no one-size-fits-all approach to art appreciation. It is a good idea to start with art books or magazines. Every year, art galleries and museums across the country offer free or reduced-price admission to a variety of art exhibitions. People argue that visual art is a type of art that combines the creative process with an appreciation for beauty and order. Visual art, in some ways, can be thought of as pieces that are intended to provoke the viewer’s interest. One of the drawbacks of online art appreciation is that there aren’t many online platforms that provide access to galleries, the ability to communicate with artists, and the ability to support and advocate for artists. Individual decision: What level of art is difficult for an individual to achieve?The following factors should be considered in order for you to consider whether or not history of art is an easy A level topic to learn. Students can learn about and appreciate the art form through a variety of online resources. Depending on your level of art appreciation and experience, you may need to adapt your methods. Reading art reviews, watching art videos, and taking part in art discussion boards are just a few examples of popular ways to engage in art discussion. You can improve your critical thinking skills and learn about art history if you become more interested in art. Learning how to appreciate online art will vary depending on one’s level of education and art knowledge. In addition to studying art history, finding online art resources, and attending art events, you can also attend art shows.",
+        post_id: 2,
+        category: "Arts",
+        publication_date: "2023-05-14",
+        featured: false,
+        views: 5,
+        likes: 2,
+        dislikes: 1
+    },
 ];
 
 // Insert sample data into users collection
