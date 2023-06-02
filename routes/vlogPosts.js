@@ -62,7 +62,7 @@ router.get('/vlogPosts', function (req, res) { return __awaiter(void 0, void 0, 
     });
 }); });
 // GET a single VlogPost document by ID
-router.get('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+router.get('/vlogPosts/posts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var post_id, post, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -85,20 +85,45 @@ router.get('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0,
         }
     });
 }); });
+// GET a single VlogPost document by ID
+router.get('/vlogPosts/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var title, post, err_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                title = req.params.title;
+                return [4 /*yield*/, MyVlogPost.findOne({ title: title })];
+            case 1:
+                post = _a.sent();
+                if (post == null) {
+                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with this title' })];
+                }
+                res.json(post);
+                return [3 /*break*/, 3];
+            case 2:
+                err_3 = _a.sent();
+                res.status(500).json({ message: err_3.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 // CREATE a new BlogPost document
 router.post('/vlogPosts', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var myVlogPost, newMyPost, err_3;
+    var myVlogPost, newMyPost, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 myVlogPost = new MyVlogPost({
                     author_id: req.body.author_id,
+                    image_url: req.body.image_url,
                     title: req.body.title,
                     content: req.body.content,
                     post_id: req.body.post_id,
                     category: req.body.category,
                     publication_date: req.body.publication_date,
-                    url: req.body.url,
+                    post_url: req.body.post_url,
                     views: req.body.views,
                     likes: req.body.likes,
                     dislikes: req.body.dislikes
@@ -112,8 +137,8 @@ router.post('/vlogPosts', function (req, res) { return __awaiter(void 0, void 0,
                 res.status(201).json(newMyPost);
                 return [3 /*break*/, 4];
             case 3:
-                err_3 = _a.sent();
-                res.status(400).json({ message: err_3.message });
+                err_4 = _a.sent();
+                res.status(400).json({ message: err_4.message });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }
@@ -121,7 +146,7 @@ router.post('/vlogPosts', function (req, res) { return __awaiter(void 0, void 0,
 }); });
 // UPDATE a BlogPost document
 router.put('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var post_id, myVlogPost, err_4;
+    var post_id, myVlogPost, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -133,12 +158,13 @@ router.put('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0,
                     return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with ' + { post_id: post_id } })];
                 }
                 myVlogPost.author_id = req.body.author_id;
+                myVlogPost.image_url = req.body.image_url;
                 myVlogPost.title = req.body.title;
                 myVlogPost.content = req.body.content;
                 myVlogPost.post_id = req.body.post_id;
                 myVlogPost.category = req.body.category;
                 myVlogPost.publication_date = req.body.publication_date;
-                myVlogPost.url = req.body.url;
+                myVlogPost.post_url = req.body.post_url;
                 myVlogPost.views = req.body.views;
                 myVlogPost.likes = req.body.likes;
                 myVlogPost.dislikes = req.body.dislikes;
@@ -151,8 +177,8 @@ router.put('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0,
                 res.status(200).json(myVlogPost);
                 return [3 /*break*/, 5];
             case 4:
-                err_4 = _a.sent();
-                res.status(400).json({ message: err_4.message });
+                err_5 = _a.sent();
+                res.status(400).json({ message: err_5.message });
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
         }

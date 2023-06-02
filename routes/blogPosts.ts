@@ -77,6 +77,7 @@ router.put('/blogPosts/:post_id', async (req, res) => {
   }
 
   myBlogPost.author_id = req.body.author_id;
+  myBlogPost.url= req.body.url;
   myBlogPost.title = req.body.title;
   myBlogPost.content = req.body.content;
   myBlogPost.post_id = req.body.post_id;

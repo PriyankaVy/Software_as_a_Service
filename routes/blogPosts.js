@@ -158,6 +158,7 @@ router.put('/blogPosts/:post_id', function (req, res) { return __awaiter(void 0,
                     return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with ' + { post_id: post_id } })];
                 }
                 myBlogPost.author_id = req.body.author_id;
+                myBlogPost.url = req.body.url;
                 myBlogPost.title = req.body.title;
                 myBlogPost.content = req.body.content;
                 myBlogPost.post_id = req.body.post_id;
