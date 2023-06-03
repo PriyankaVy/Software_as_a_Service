@@ -69,11 +69,11 @@ router.post('/blogPosts', async (req, res) => {
 });
 
 // UPDATE a BlogPost document
-router.put('/blogPosts/:post_id', async (req, res) => {
-  const post_id = req.params.post_id
-  const myBlogPost = await MyBlogPost.findOne({ post_id });
+router.put('/blogPosts/:title', async (req, res) => {
+  const title = req.params.title
+  const myBlogPost = await MyBlogPost.findOne({ title:title });
   if (myBlogPost == null) {
-      return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
+      return res.status(404).json({ message: 'Cannot find post document with title' });
   }
 
   myBlogPost.author_id = req.body.author_id;
@@ -97,13 +97,13 @@ router.put('/blogPosts/:post_id', async (req, res) => {
 });
 
 // DELETE a BlogPost document
-router.delete('/blogPosts/:post_id', async (req, res) => {
-  const post_id = req.params.post_id
-  const myBlogPost = await MyBlogPost.findOne({post_id});
+router.delete('/blogPosts/:title', async (req, res) => {
+  const title = req.params.title
+  const myBlogPost = await MyBlogPost.findOne({title:title});
   if (myBlogPost == null) {
-      return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
+      return res.status(404).json({ message: 'Cannot find post document with this title' });
   }
-  await myBlogPost.deleteOne({post_id});
+  await myBlogPost.deleteOne({title:title});
   res.status(200).json({ message: 'Post deleted successfully' });
 });
 
