@@ -3,7 +3,7 @@ db.Users.deleteMany({});
 db.Users.aggregate([{
     $lookup: {
         from: "BlogPosts",
-        localField: "user_id",
+        localField: "username",
         foreignField: "author_id",
         as: "blogPosts"
     }
@@ -13,7 +13,7 @@ db.Users.aggregate([{
 db.Users.aggregate([{
     $lookup: {
         from: "VlogPosts",
-        localField: "user_id",
+        localField: "username",
         foreignField: "author_id",
         as: "vlogPosts"
     }

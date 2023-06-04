@@ -6,12 +6,14 @@ var cors = require('cors');
 var userRouter = require('./routes/users');
 var bpostRouter = require('./routes/blogPosts');
 var vpostRouter = require('./routes/vlogPosts');
+var cRouter = require('./routes/comments');
 // Use the routes
 app.use(express.json()); // Enable JSON parsing middleware
 app.use(cors());
 app.use('/', userRouter);
 app.use('/', bpostRouter);
 app.use('/', vpostRouter);
+app.use('/', cRouter);
 // Start server
 var port = 8080;
 app.listen(port, function () {
