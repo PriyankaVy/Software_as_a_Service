@@ -69,11 +69,11 @@ router.post('/vlogPosts', async (req, res) => {
 });
 
 // UPDATE a BlogPost document
-router.put('/vlogPosts/:post_id', async (req, res) => {
-    const post_id = req.params.post_id
-    const myVlogPost = await MyVlogPost.findOne({ post_id });
+router.put('/vlogPosts/:title', async (req, res) => {
+    const title = req.params.title
+    const myVlogPost = await MyVlogPost.findOne({ title:title });
     if (myVlogPost == null) {
-        return res.status(404).json({ message: 'Cannot find post document with ' + { post_id } });
+        return res.status(404).json({ message: 'Cannot find post document with this title'});
     }
 
     myVlogPost.author_id = req.body.author_id;
@@ -97,14 +97,14 @@ router.put('/vlogPosts/:post_id', async (req, res) => {
 });
 
 // DELETE a BlogPost document
-router.delete('/vlogPosts/:post_id', async (req, res) => {
-    const post_id = req.params.post_id
-    const myVlogPost = await MyVlogPost.findOne({ post_id });
+router.delete('/vlogPosts/:title', async (req, res) => {
+    const title = req.params.title
+    const myVlogPost = await MyVlogPost.findOne({ title:title });
     if (myVlogPost == null) {
-        return res.status(404).json({ message: 'Cannot find post document with ' + { post_id } });
+        return res.status(404).json({ message: 'Cannot find post document with this title'});
     }
 
-    await myVlogPost.deleteOne({ post_id });
+    await myVlogPost.deleteOne({ title:title });
     res.status(200).json({ message: 'Post deleted successfully' });
 });
 

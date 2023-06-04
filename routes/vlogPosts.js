@@ -145,17 +145,17 @@ router.post('/vlogPosts', function (req, res) { return __awaiter(void 0, void 0,
     });
 }); });
 // UPDATE a BlogPost document
-router.put('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var post_id, myVlogPost, err_5;
+router.put('/vlogPosts/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var title, myVlogPost, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                post_id = req.params.post_id;
-                return [4 /*yield*/, MyVlogPost.findOne({ post_id: post_id })];
+                title = req.params.title;
+                return [4 /*yield*/, MyVlogPost.findOne({ title: title })];
             case 1:
                 myVlogPost = _a.sent();
                 if (myVlogPost == null) {
-                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with ' + { post_id: post_id } })];
+                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with this title' })];
                 }
                 myVlogPost.author_id = req.body.author_id;
                 myVlogPost.image_url = req.body.image_url;
@@ -185,19 +185,19 @@ router.put('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0,
     });
 }); });
 // DELETE a BlogPost document
-router.delete('/vlogPosts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var post_id, myVlogPost;
+router.delete('/vlogPosts/:title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var title, myVlogPost;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                post_id = req.params.post_id;
-                return [4 /*yield*/, MyVlogPost.findOne({ post_id: post_id })];
+                title = req.params.title;
+                return [4 /*yield*/, MyVlogPost.findOne({ title: title })];
             case 1:
                 myVlogPost = _a.sent();
                 if (myVlogPost == null) {
-                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with ' + { post_id: post_id } })];
+                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with this title' })];
                 }
-                return [4 /*yield*/, myVlogPost.deleteOne({ post_id: post_id })];
+                return [4 /*yield*/, myVlogPost.deleteOne({ title: title })];
             case 2:
                 _a.sent();
                 res.status(200).json({ message: 'Post deleted successfully' });
