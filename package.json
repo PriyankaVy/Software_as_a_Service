@@ -2,7 +2,7 @@
   "name": "express",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "devStart": "nodemon server.js",
     "test": "mocha "
@@ -14,11 +14,17 @@
     "async": "^3.2.4",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "mocha": "^10.2.0",
     "mongodb": "^5.4.0",
-    "mongoose": "^7.1.0"
+    "mongoose": "^7.1.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-google-oauth2": "^0.2.0",
+    "passport-google-oauth20-with-people-api": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.16.2",

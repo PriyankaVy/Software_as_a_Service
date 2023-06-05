@@ -19,7 +19,7 @@ class BlogPostModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                author_id: Number,
+                author_id: String,
                 url: String,
                 title: String,
                 content: String,

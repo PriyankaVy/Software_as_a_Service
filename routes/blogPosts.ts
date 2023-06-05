@@ -15,13 +15,48 @@ router.get('/blogPosts', async (req, res) => {
     }
 });
 
+router.get('/blogsByUser', async (req,res) => {
+  if(req.isAuthenticated()){
+    const userId = req.user.user_id;
+    const myPosts = await MyBlogPost.find({ author_id:userId });
+    
+    const userProfile = {
+      id: req.user.user_id,
+      username: req.user.displayName,
+      email: req.user.email
+    }
+    res.json(myPosts);
+    }
+    else{
+      res.redirect('/bloggers-room');
+    }
+  }
+);
+
+router.get('/user', async (req,res) => {
+  if(req.isAuthenticated()){
+    const userId = req.user.user_id;
+    
+    const userProfile = {
+      user_id: req.user.id,
+      displayName: req.user.displayName,
+      email: req.user.emails[0].value
+    }
+    res.json(userProfile);
+    }
+    else{
+      res.redirect('/bloggers-room');
+    }
+  }
+);
+
 // GET a single VlogPost document by ID
-router.get('/blogPosts/posts/:post_id', async (req, res) => {
+router.get('/blogPosts/posts/:user_id', async (req, res) => {
   try {
-    const post_id = req.params.post_id
-    const post = await MyBlogPost.findOne({ post_id });
+    const user_id = req.params.post_id
+    const post = await MyBlogPost.find({ author_id:user_id });
     if (post == null) {
-      return res.status(404).json({ message: 'Cannot find post document with ' + {post_id} });
+      return res.status(404).json({ message: 'Cannot find post document with this user' });
     }
     res.json(post);
   } catch (err) {

@@ -3,7 +3,7 @@ db.Users.deleteMany({});
 db.Users.aggregate([{
     $lookup: {
         from: "BlogPosts",
-        localField: "username",
+        localField: "user_id",
         foreignField: "author_id",
         as: "blogPosts"
     }
@@ -13,7 +13,7 @@ db.Users.aggregate([{
 db.Users.aggregate([{
     $lookup: {
         from: "VlogPosts",
-        localField: "username",
+        localField: "user_id",
         foreignField: "author_id",
         as: "vlogPosts"
     }
@@ -23,45 +23,14 @@ db.Users.aggregate([{
 // Define sample data
 const users = [
     {
-        user_id: 1,
-        username: "Pvy",
-        fullname: "Priyanka",
-        description: "MS CS Student..",
-        email: "pvy@gmail.com",
-        password: "priya123"
+        user_id: "100105303031333661985",
+        displayName: "Priyanka Vysyaraju"
     },
     {
-        user_id: 2,
-        username: "Psm",
-        fullname: "Priya",
-        description: "MS CS Student..",
-        email: "psm@gmail.com",
-        password: "priya0306"
-    },
-    {
-        user_id: 3,
-        username: "Heni",
-        fullname: "Henish",
-        description: "MS CS Student..",
-        email: "heni@gmail.com",
-        password: "henish123"
-    },
-    {
-        user_id: 4,
-        username: "Khan",
-        fullname: "Mujadid",
-        description: "MS CS Student..",
-        email: "khan@gmail.com",
-        password: "khan012"
-    },
-    {
-        user_id: 5,
-        username: "Maran",
-        fullname: "Ilamaran",
-        description: "MS CS Student..",
-        email: "ila@gmail.com",
-        password: "ila123"
+        user_id: "104928675914176513026",
+        displayName: "Vysyaraju Priyanka"
     }
+    
 ];
 
 // Insert sample data into users collection

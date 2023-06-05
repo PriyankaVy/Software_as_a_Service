@@ -1,4 +1,4 @@
-import {UserModel} from '../models/UserModel';
+import { UserModel } from '../models/UserModel';
 //import {BlogPostModel} from '../models/BlogPostModel';
 
 const express = require('express');
@@ -8,11 +8,21 @@ const userModel = new UserModel();
 const MyUser = userModel.model;
 //const MyBlogPost = blogPostModel.model;
 
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/bloggers-room');
+};
+
 // GET all MyUser documents
-router.get('/users', async (req, res) => {
+router.get('/user', isAuthenticated, async (req, res) => {
   try {
-    const myUsers = await MyUser.find();
-    res.json(myUsers);
+    const user = {
+      username: req.user.displayName,
+      email: req.user.email
+    };
+    res.json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

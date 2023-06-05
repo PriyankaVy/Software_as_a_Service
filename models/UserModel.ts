@@ -17,18 +17,21 @@ class UserModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                user_id: Number,
-                username: String,
-                fullname: String,
-                description: String,
-                email: String,
-                password: String
+                user_id: {type: String, required: true, unique: true},
+                displayName: {type: String, required: true},
+                email: {type: String, required: true}
             }, {collection: 'Users'}
         );
     }
 
     public createModel(): void {
-        this.model = mongooseConnection.model<IUser>("Users", this.schema);
+        if(!mongooseConnection.models.Users){
+            this.model = mongooseConnection.model<IUser>("Users", this.schema);
+        }
+        else{
+            this.model = mongooseConnection.models.Users;
+        }
+
     }
 
 } 

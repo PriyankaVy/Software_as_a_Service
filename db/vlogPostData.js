@@ -13,7 +13,7 @@ db.VlogPosts.aggregate([{
 // Define sample data
 const posts = [
     {
-        author_id: "Pvy",
+        author_id: "104928675914176513026",
         image_url:"https://www.specpage.com/wp-content/uploads/2020/05/shutterstock_1256009944-Specpage.jpg",
         title: "Software-as-a-Service",
         content: "CPSC 5240 01 Spring Quarter 23",
@@ -26,7 +26,7 @@ const posts = [
         dislikes: 0
     },
     {
-        author_id: "Psm",
+        author_id: "104928675914176513026",
         image_url:"https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg",
         title: "We Ate EVERYTHING At DISNEYLAND! My Family Comes To Los Angeles!!!",
         content: "Watch my latest vlog",
@@ -39,7 +39,7 @@ const posts = [
         dislikes: 1
     },
     {
-        author_id: "Heni",
+        author_id: "100105303031333661985",
         image_url:"https://cdn.educba.com/academy/wp-content/uploads/2020/03/What-is-ExpressJS.jpg",
         title: "Express",
         content: "Backend Technology",
@@ -53,7 +53,7 @@ const posts = [
     },
 
     {
-        author_id: "Khan",
+        author_id: "100105303031333661985",
         image_url:"https://image.cnbcfm.com/api/v1/image/107071342-1654498386354-gettyimages-1401126499-vcg111385892956.jpeg?v=1654498568",
         title: "MIND BLOWING FIRST IMPRESSION TO SHANGHAI, CHINA ",
         content: "This video is in English, Bangla, Telegu and Malayalam Subtitles.",

@@ -61,19 +61,61 @@ router.get('/blogPosts', function (req, res) { return __awaiter(void 0, void 0, 
         }
     });
 }); });
+router.get('/blogsByUser', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var userId, myPosts, userProfile;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!req.isAuthenticated()) return [3 /*break*/, 2];
+                userId = req.user.user_id;
+                return [4 /*yield*/, MyBlogPost.find({ author_id: userId })];
+            case 1:
+                myPosts = _a.sent();
+                userProfile = {
+                    id: req.user.user_id,
+                    username: req.user.displayName,
+                    email: req.user.email
+                };
+                res.json(myPosts);
+                return [3 /*break*/, 3];
+            case 2:
+                res.redirect('/bloggers-room');
+                _a.label = 3;
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+router.get('/user', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var userId, userProfile;
+    return __generator(this, function (_a) {
+        if (req.isAuthenticated()) {
+            userId = req.user.user_id;
+            userProfile = {
+                user_id: req.user.id,
+                displayName: req.user.displayName,
+                email: req.user.emails[0].value
+            };
+            res.json(userProfile);
+        }
+        else {
+            res.redirect('/bloggers-room');
+        }
+        return [2 /*return*/];
+    });
+}); });
 // GET a single VlogPost document by ID
-router.get('/blogPosts/posts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var post_id, post, err_2;
+router.get('/blogPosts/posts/:user_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user_id, post, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                post_id = req.params.post_id;
-                return [4 /*yield*/, MyBlogPost.findOne({ post_id: post_id })];
+                user_id = req.params.post_id;
+                return [4 /*yield*/, MyBlogPost.find({ author_id: user_id })];
             case 1:
                 post = _a.sent();
                 if (post == null) {
-                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with ' + { post_id: post_id } })];
+                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with this user' })];
                 }
                 res.json(post);
                 return [3 /*break*/, 3];

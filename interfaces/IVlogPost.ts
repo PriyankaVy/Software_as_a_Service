@@ -1,7 +1,7 @@
 import Mongoose = require("mongoose");
 
 interface IVlogPost extends Mongoose.Document {
-    author_id: number;
+    author_id: string;
     image_url: string;
     title: string;
     content: string;

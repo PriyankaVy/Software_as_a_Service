@@ -44,29 +44,32 @@ var userModel = new UserModel_1.UserModel();
 //const blogPostModel = new BlogPostModel();
 var MyUser = userModel.model;
 //const MyBlogPost = blogPostModel.model;
+var isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/bloggers-room');
+};
 // GET all MyUser documents
-router.get('/users', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var myUsers, err_1;
+router.get('/user', isAuthenticated, function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, MyUser.find()];
-            case 1:
-                myUsers = _a.sent();
-                res.json(myUsers);
-                return [3 /*break*/, 3];
-            case 2:
-                err_1 = _a.sent();
-                res.status(500).json({ message: err_1.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+        try {
+            user = {
+                username: req.user.displayName,
+                email: req.user.email
+            };
+            res.json(user);
         }
+        catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+        return [2 /*return*/];
     });
 }); });
 // GET a single MyUser document by ID
 router.get('/users/:user_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user_id, myUser, err_2;
+    var user_id, myUser, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -81,8 +84,8 @@ router.get('/users/:user_id', function (req, res) { return __awaiter(void 0, voi
                 res.json(myUser);
                 return [3 /*break*/, 3];
             case 2:
-                err_2 = _a.sent();
-                res.status(500).json({ message: err_2.message });
+                err_1 = _a.sent();
+                res.status(500).json({ message: err_1.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -90,7 +93,7 @@ router.get('/users/:user_id', function (req, res) { return __awaiter(void 0, voi
 }); });
 // CREATE a new MyUser document
 router.post('/users', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var myUser, newMyUser, err_3;
+    var myUser, newMyUser, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -111,8 +114,8 @@ router.post('/users', function (req, res) { return __awaiter(void 0, void 0, voi
                 res.status(201).json(newMyUser);
                 return [3 /*break*/, 4];
             case 3:
-                err_3 = _a.sent();
-                res.status(400).json({ message: err_3.message });
+                err_2 = _a.sent();
+                res.status(400).json({ message: err_2.message });
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }

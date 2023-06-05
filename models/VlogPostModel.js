@@ -12,7 +12,7 @@ var VlogPostModel = /** @class */ (function () {
     }
     VlogPostModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            author_id: Number,
+            author_id: String,
             image_url: String,
             title: String,
             content: String,

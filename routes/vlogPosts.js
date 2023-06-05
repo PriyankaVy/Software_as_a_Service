@@ -62,18 +62,18 @@ router.get('/vlogPosts', function (req, res) { return __awaiter(void 0, void 0, 
     });
 }); });
 // GET a single VlogPost document by ID
-router.get('/vlogPosts/posts/:post_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var post_id, post, err_2;
+router.get('/vlogPosts/posts/:user_id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var user_id, post, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                post_id = req.params.post_id;
-                return [4 /*yield*/, MyVlogPost.findOne({ post_id: post_id })];
+                user_id = req.params.user_id;
+                return [4 /*yield*/, MyVlogPost.find({ authoe_id: user_id })];
             case 1:
                 post = _a.sent();
                 if (post == null) {
-                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with ' + { post_id: post_id } })];
+                    return [2 /*return*/, res.status(404).json({ message: 'Cannot find post document with this user' })];
                 }
                 res.json(post);
                 return [3 /*break*/, 3];
