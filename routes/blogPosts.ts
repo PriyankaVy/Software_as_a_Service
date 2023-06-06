@@ -45,8 +45,8 @@ router.get('/blogsByUser', async (req,res) => {
 // GET a single VlogPost document by ID
 router.get('/blogPosts/posts/:post_id', async (req, res) => {
   try {
-    const user_id = req.params.post_id
-    const post = await MyBlogPost.find({ author_id:user_id });
+    const post_id = req.params.post_id
+    const post = await MyBlogPost.findOne({ post_id:post_id });
     if (post == null) {
       return res.status(404).json({ message: 'Cannot find post document with this user' });
     }
@@ -132,31 +132,6 @@ router.delete('/blogPosts/:title', async (req, res) => {
   }
   await myBlogPost.deleteOne({title:title});
   res.status(200).json({ message: 'Post deleted successfully' });
-});
-
-
-
-//------------------------Test APIs----------------
-router.get('/test/blogPosts', async (req, res) => {
-  try {
-    const myPosts = await MyBlogPost.find();
-    res.json(myPosts);
-} catch (err) {
-    res.status(500).json({ message: err.message });
-}
-});
-
-router.get('test/blogPosts/posts/:post_id', async (req, res) => {
-  try {
-    const post_id = req.params.post_id
-    const post = await MyBlogPost.findOne({ post_id });
-    if (post == null) {
-      return res.status(404).json({ message: 'Cannot find post document with this user' });
-    }
-    res.json(post);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
 });
 
 module.exports = router;

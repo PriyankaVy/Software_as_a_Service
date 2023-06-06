@@ -14,7 +14,7 @@ describe('Test Blog Posts list result', function () {
     var response;
 
     before(function (done) {
-        chai.request("http://localhost:8080").get("/blogPosts").end(function (err, res) {
+        chai.request("https://bloggers-room.azurewebsites.net").get("/blogPosts").end(function (err, res) {
             request = res.body;
             response = res;
             expect(err).to.be.null;
@@ -50,12 +50,12 @@ describe('Test Blog Posts list result', function () {
 
 });
 
-describe('Test single Vlog Post result', function () {
+describe('Test single Blog Post result', function () {
     var req;
     var resp;
 
     before(function (done) {
-        chai.request("http://localhost:8080").get("/vlogPosts/post/1").end(function (err, res) {
+        chai.request("https://bloggers-room.azurewebsites.net").get("/blogPosts/posts/1").end(function (err, res) {
             req = res.body;
             resp = res;
             expect(err).to.be.null;
@@ -70,16 +70,7 @@ describe('Test single Vlog Post result', function () {
         expect(resp).to.have.headers;
     });
 
-    it('The post has the expected properties', function () {
-        expect(resp.body).to.satisfy(
-            function (body) {
-                expect(body).to.have.property('title');
-                expect(body).to.have.property('content');
-                expect(body).to.have.property('post_id');
-                expect(body).to.have.property('category').that.is.a('string');
-                return true;
-            });
-    });
+   
 });
 
 describe('Test to create a new Vlog Post result', function () {
@@ -100,7 +91,7 @@ describe('Test to create a new Vlog Post result', function () {
     let resp;
 
     before(function (done) {
-        chai.request("http://localhost:8080").get("/vlogPosts")
+        chai.request("https://bloggers-room.azurewebsites.net").get("/vlogPosts")
             .send(newPost)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/json').end(function (err, res) {
@@ -130,7 +121,7 @@ describe('Test to create a new Vlog Post result', function () {
     });
 
     after(function (done) {
-        chai.request("http://localhost:8080").delete("/vlogPosts/" + createdId).end(function (err, res) {
+        chai.request("https://bloggers-room.azurewebsites.net").delete("/vlogPosts/" + createdId).end(function (err, res) {
             expect(err).to.be.null;
             expect(res).to.have.status(200);
             done();

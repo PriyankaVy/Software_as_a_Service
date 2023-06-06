@@ -50,8 +50,8 @@ router.get('/blogsByUser', (req, res) => __awaiter(void 0, void 0, void 0, funct
 // GET a single VlogPost document by ID
 router.get('/blogPosts/posts/:post_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user_id = req.params.post_id;
-        const post = yield MyBlogPost.find({ author_id: user_id });
+        const post_id = req.params.post_id;
+        const post = yield MyBlogPost.findOne({ post_id: post_id });
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post document with this user' });
         }
@@ -133,28 +133,5 @@ router.delete('/blogPosts/:title', (req, res) => __awaiter(void 0, void 0, void 
     }
     yield myBlogPost.deleteOne({ title: title });
     res.status(200).json({ message: 'Post deleted successfully' });
-}));
-//------------------------Test APIs----------------
-router.get('/test/blogPosts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const myPosts = yield MyBlogPost.find();
-        res.json(myPosts);
-    }
-    catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-}));
-router.get('test/blogPosts/posts/:post_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const post_id = req.params.post_id;
-        const post = yield MyBlogPost.findOne({ post_id });
-        if (post == null) {
-            return res.status(404).json({ message: 'Cannot find post document with this user' });
-        }
-        res.json(post);
-    }
-    catch (err) {
-        res.status(500).json({ message: err.message });
-    }
 }));
 module.exports = router;
