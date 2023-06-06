@@ -40,7 +40,6 @@ function validateAuth(req, res, next) {
 }
 app.get('/auth/google', passport.authenticate('google', { scope: ['Profile', 'email'] }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    session.user_id = "104928675914176513026";
     console.log("successfully authenticated user and returned to callback page.");
     console.log("redirecting to dashboard");
     const token = 'GENERATED_TOKEN';

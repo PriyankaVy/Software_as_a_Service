@@ -21,7 +21,7 @@ class Passport {
         passport.use(new GoogleStrategy({
             clientID: this.GOOGLE_CLIENT_ID,
             clientSecret: this.GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:8080/auth/google/callback",
+            callbackURL: "https://bloggers-room.azurewebsites.net/auth/google/callback",
         }, (request, accessToken, refreshToken, profile, done) => __awaiter(this, void 0, void 0, function* () {
             try {
                 console.log('validating google profile:' + JSON.stringify(profile));
