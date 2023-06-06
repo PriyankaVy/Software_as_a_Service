@@ -54,12 +54,14 @@ describe('Test Blog Posts list result', function () {
 
 });
 
-describe('Test single Blog Post result', function () {
+describe('Test single Comment result', function () {
     var req;
     var resp;
 
     before(function (done) {
-        chai.request("https://bloggers-room.azurewebsites.net").get("/blogPosts/posts/1").end(function (err, res) {
+        chai.request("https://bloggers-room.azurewebsites.net")
+        .get("/comments/More than 24 dinosaurs of 'Jurassic World' movies roaring into Resch Center for 6 arena shows in October")
+        .end(function (err, res) {
             req = res.body;
             resp = res;
             expect(err).to.be.null;
@@ -73,6 +75,20 @@ describe('Test single Blog Post result', function () {
         expect(resp).to.be.json;
         expect(resp).to.have.headers;
     });
+
+    it('The posts in the array have the expected properties', function () {
+        expect(resp.body).to.satisfy(
+            function (body) {
+                for (var i = 0; i < body.length; i++) {
+                    expect(body[i]).to.have.property('post_id');
+                    expect(body[i]).to.have.property('comment');
+                    expect(body[i]).to.have.property('createdAt');
+                    
+                }
+                return true;
+            });
+    });
+
 
 
 });
@@ -110,6 +126,17 @@ describe('Test to create a new Vlog Post result', function () {
             });
     });
 
+    after(function (done) {
+        chai.request("https://bloggers-room.azurewebsites.net").delete("/vlogposts/" + createdId)
+            .end(function (err, res) {
+                
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                done();
+                console.log("Deleted successfully");
+            });
+    });
+
     it('Should create a post object', function () {
         expect(resp).to.have.status(201);
         expect(resp).to.be.json;
@@ -124,16 +151,6 @@ describe('Test to create a new Vlog Post result', function () {
             expect(body).to.have.property('category').that.is.a('string');
             return true;
         });
-    });
-
-    after(function (done) {
-        chai.request("https://bloggers-room.azurewebsites.net").delete("/vlogposts" + createdId)
-            .end(function (err, res) {
-                expect(err).to.be.null;
-                expect(res).to.have.status(200);
-                done();
-            });
-
     });
 
 });
