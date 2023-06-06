@@ -19,9 +19,22 @@ router.get('/vlogPosts', async (req, res) => {
 router.get('/vlogPosts/posts/:user_id', async (req, res) => {
     try {
         const user_id = req.params.user_id
-        const post = await MyVlogPost.find({ authoe_id:user_id });
+        const post = await MyVlogPost.find({ author_id:user_id });
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post document with this user' });
+        }
+        res.json(post);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+router.get('/vlogPosts/post/:post_id', async (req, res) => {
+    try {
+        const post_id = req.params.post_id
+        const post = await MyVlogPost.findOne({ post_id:post_id });
+        if (post == null) {
+            return res.status(404).json({ message: 'Cannot find post document with this id' });
         }
         res.json(post);
     } catch (err) {

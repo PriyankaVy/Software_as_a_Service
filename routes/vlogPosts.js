@@ -28,9 +28,22 @@ router.get('/vlogPosts', (req, res) => __awaiter(void 0, void 0, void 0, functio
 router.get('/vlogPosts/posts/:user_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user_id = req.params.user_id;
-        const post = yield MyVlogPost.find({ authoe_id: user_id });
+        const post = yield MyVlogPost.find({ author_id: user_id });
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post document with this user' });
+        }
+        res.json(post);
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+}));
+router.get('/vlogPosts/post/:post_id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const post_id = req.params.post_id;
+        const post = yield MyVlogPost.findOne({ post_id: post_id });
+        if (post == null) {
+            return res.status(404).json({ message: 'Cannot find post document with this id' });
         }
         res.json(post);
     }
