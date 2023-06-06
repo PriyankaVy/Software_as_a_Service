@@ -47,16 +47,17 @@ function validateAuth(req, res, next) {
     console.log("user is not authenticated");
     res.redirect('/');
 }
-app.get('/auth/google', passport.authenticate('google', { scope: ['Profile', 'email'] }));
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
     console.log("successfully authenticated user and returned to callback page.");
     console.log("redirecting to dashboard");
     const token = 'GENERATED_TOKEN';
     res.redirect('/dashboard/main');
 });
-app.get('/user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get('/user', validateAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user_id = session.user_id;
+        console.log(session);
+        const user_id = req.session.user_id;
         const post = yield MyUser.find({ user_id: user_id });
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post document with this user' });

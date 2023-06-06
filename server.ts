@@ -34,7 +34,7 @@ app.use('/', vpostRouter);
 app.use('/', cRouter);
 app.use('/', express.static(__dirname + '/bloggers-room'));
 
-function validateAuth(req, res, next): void {
+function validateAuth(req, res, next) {
   if (req.isAuthenticated()) {
     console.log("user is authenticated");
     return next();
@@ -44,7 +44,7 @@ function validateAuth(req, res, next): void {
 }
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['Profile', 'email'] }));
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/auth/google/callback',
   passport.authenticate('google',
@@ -56,9 +56,10 @@ app.get('/auth/google/callback',
     res.redirect('/dashboard/main');
   });
 
-  app.get('/user', async (req,res) => {
+  app.get('/user', validateAuth, async (req,res) => {
     try {
-      const user_id = session.user_id;
+      console.log(session)
+      const user_id = req.session.user_id;
       const post = await MyUser.find({ user_id:user_id });
       if (post == null) {
         return res.status(404).json({ message: 'Cannot find post document with this user' });
@@ -68,7 +69,7 @@ app.get('/auth/google/callback',
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
-  })
+  });
 
 app.get('/logout', (req, res) => {
   req.logout();
