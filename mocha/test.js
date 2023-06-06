@@ -1,3 +1,7 @@
+const vlogPostModel = require('../models/VlogPostModel');
+
+const MyVlogPost = vlogPostModel;
+
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var async = require('async');
@@ -70,10 +74,11 @@ describe('Test single Blog Post result', function () {
         expect(resp).to.have.headers;
     });
 
-   
+
 });
 
 describe('Test to create a new Vlog Post result', function () {
+    this.timeout(10000);
     let createdId;
     let newPost = {
         author_id: 'author123',
@@ -87,14 +92,16 @@ describe('Test to create a new Vlog Post result', function () {
         views: 0,
         likes: 0,
         dislikes: 0
-    }
+    };
     let resp;
 
     before(function (done) {
-        chai.request("https://bloggers-room.azurewebsites.net").get("/vlogPosts")
-            .send(newPost)
+        chai.request("https://bloggers-room.azurewebsites.net")
+            .post("/vlogPosts")
             .set('Content-Type', 'application/json')
-            .set('Accept', 'application/json').end(function (err, res) {
+            .set('Accept', 'application/json')
+            .send(newPost)
+            .end(function (err, res) {
                 resp = res;
                 createdId = resp.body.title;
                 expect(err).to.be.null;
@@ -110,21 +117,23 @@ describe('Test to create a new Vlog Post result', function () {
     });
 
     it('The post has the expected properties', function () {
-        expect(resp.body).to.satisfy(
-            function (body) {
-                expect(body).to.have.property('title');
-                expect(body).to.have.property('content');
-                expect(body).to.have.property('post_id');
-                expect(body).to.have.property('category').that.is.a('string');
-                return true;
-            });
+        expect(resp.body).to.satisfy(function (body) {
+            expect(body).to.have.property('title');
+            expect(body).to.have.property('content');
+            expect(body).to.have.property('post_id');
+            expect(body).to.have.property('category').that.is.a('string');
+            return true;
+        });
     });
 
     after(function (done) {
-        chai.request("https://bloggers-room.azurewebsites.net").delete("/vlogPosts/" + createdId).end(function (err, res) {
-            expect(err).to.be.null;
-            expect(res).to.have.status(200);
-            done();
-        })
-    })
+        chai.request("https://bloggers-room.azurewebsites.net").delete("/vlogposts" + createdId)
+            .end(function (err, res) {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                done();
+            });
+
+    });
+
 });
