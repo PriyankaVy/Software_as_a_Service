@@ -129,20 +129,6 @@ router.delete('/blogPosts/:title', (req, res) => __awaiter(void 0, void 0, void 
     yield myBlogPost.deleteOne({ title: title });
     res.status(200).json({ message: 'Post deleted successfully' });
 }));
-router.get('/user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const user_id = "104928675914176513026";
-        const post = yield MyUser.find({ user_id: user_id });
-        if (post == null) {
-            return res.status(404).json({ message: 'Cannot find post document with this user' });
-        }
-        console.log(post);
-        res.json(post);
-    }
-    catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-}));
 //------------------------Test APIs----------------
 router.get('/test/blogPosts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

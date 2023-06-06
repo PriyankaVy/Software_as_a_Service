@@ -128,19 +128,7 @@ router.delete('/blogPosts/:title', async (req, res) => {
   res.status(200).json({ message: 'Post deleted successfully' });
 });
 
-router.get('/user', async (req,res) => {
-  try {
-    const user_id = "104928675914176513026";
-    const post = await MyUser.find({ user_id:user_id });
-    if (post == null) {
-      return res.status(404).json({ message: 'Cannot find post document with this user' });
-    }
-    console.log(post);
-    res.json(post);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-})
+
 
 //------------------------Test APIs----------------
 router.get('/test/blogPosts', async (req, res) => {

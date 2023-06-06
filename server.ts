@@ -53,10 +53,22 @@ app.get('/auth/google/callback',
     console.log("successfully authenticated user and returned to callback page.");
     console.log("redirecting to dashboard");
     const token = 'GENERATED_TOKEN';
-    res.redirect('https://bloggers-room.azurewebsites.net/dashboard/main');
+    res.redirect('/dashboard/main');
   });
 
-
+  app.get('/user', async (req,res) => {
+    try {
+      const user_id = session.id;
+      const post = await MyUser.find({ user_id:user_id });
+      if (post == null) {
+        return res.status(404).json({ message: 'Cannot find post document with this user' });
+      }
+      console.log(post);
+      res.json(post);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  })
 
 app.get('/logout', (req, res) => {
   req.logout();
