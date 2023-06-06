@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Passport_1 = require("./Passport");
 const UserModel_1 = require("./models/UserModel");
@@ -56,21 +47,6 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
     const token = 'GENERATED_TOKEN';
     res.redirect('/dashboard/main');
 });
-app.get('/user', validateAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        console.log(session);
-        const user_id = req.user.id;
-        const post = yield MyUser.find({ user_id: user_id });
-        if (post == null) {
-            return res.status(404).json({ message: 'Cannot find post document with this user' });
-        }
-        console.log(post);
-        res.json(post);
-    }
-    catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-}));
 app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');

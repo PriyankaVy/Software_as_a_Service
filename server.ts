@@ -58,21 +58,6 @@ app.get('/auth/google/callback',
     res.redirect('/dashboard/main');
   });
 
-  app.get('/user', validateAuth, async (req,res) => {
-    try {
-      console.log(session)
-      const user_id = req.user.id;
-      const post = await MyUser.find({ user_id:user_id });
-      if (post == null) {
-        return res.status(404).json({ message: 'Cannot find post document with this user' });
-      }
-      console.log(post);
-      res.json(post);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  });
-
 app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');

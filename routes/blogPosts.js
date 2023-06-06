@@ -17,6 +17,16 @@ const blogPostModel = new BlogPostModel_1.BlogPostModel();
 const MyBlogPost = blogPostModel.model;
 const userModel = new UserModel_1.UserModel();
 const MyUser = userModel.model;
+router.get('/user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    if (req.isAuthenticated()) {
+        const userId = req.user.user_id;
+        const myUser = yield MyUser.find({ user_id: userId });
+        res.json(myUser);
+    }
+    else {
+        res.redirect('/bloggers-room');
+    }
+}));
 // GET all post documents
 router.get('/blogPosts', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -31,11 +41,6 @@ router.get('/blogsByUser', (req, res) => __awaiter(void 0, void 0, void 0, funct
     if (req.isAuthenticated()) {
         const userId = req.user.user_id;
         const myPosts = yield MyBlogPost.find({ author_id: userId });
-        const userProfile = {
-            id: req.user.user_id,
-            username: req.user.displayName,
-            email: req.user.email
-        };
         res.json(myPosts);
     }
     else {

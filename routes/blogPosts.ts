@@ -8,6 +8,18 @@ const MyBlogPost = blogPostModel.model;
 const userModel = new UserModel();
 const MyUser = userModel.model;
 
+router.get('/user', async (req,res) => {
+  if(req.isAuthenticated()){
+    const userId = req.user.user_id;
+    const myUser = await MyUser.find({ user_id:userId });
+    res.json(myUser);
+    }
+    else{
+      res.redirect('/bloggers-room');
+    }
+  }
+);
+
 // GET all post documents
 router.get('/blogPosts', async (req, res) => {
     try {
@@ -22,12 +34,6 @@ router.get('/blogsByUser', async (req,res) => {
   if(req.isAuthenticated()){
     const userId = req.user.user_id;
     const myPosts = await MyBlogPost.find({ author_id:userId });
-    
-    const userProfile = {
-      id: req.user.user_id,
-      username: req.user.displayName,
-      email: req.user.email
-    }
     res.json(myPosts);
     }
     else{
