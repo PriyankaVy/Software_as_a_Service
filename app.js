@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
-var express = require("express");
-var bodyParser = require("body-parser");
-var UserModel_1 = require("./models/UserModel");
-var BlogPostModel_1 = require("./models/BlogPostModel");
-var VlogPostModel_1 = require("./models/VlogPostModel");
-var crypto = require("crypto");
+const express = require("express");
+const bodyParser = require("body-parser");
+const UserModel_1 = require("./models/UserModel");
+const BlogPostModel_1 = require("./models/BlogPostModel");
+const VlogPostModel_1 = require("./models/VlogPostModel");
+const crypto = require("crypto");
 // Creates and configures an ExpressJS web server.
-var App = /** @class */ (function () {
+class App {
     //Run configuration methods on the Express instance.
-    function App() {
+    constructor() {
         this.expressApp = express();
         this.middleware();
         this.routes();
@@ -19,50 +19,48 @@ var App = /** @class */ (function () {
         this.VlogPosts = new VlogPostModel_1.VlogPostModel();
     }
     // Configure Express middleware.
-    App.prototype.middleware = function () {
+    middleware() {
         this.expressApp.use(bodyParser.json());
         this.expressApp.use(bodyParser.urlencoded({ extended: false }));
-    };
+    }
     // Configure API endpoints.
-    App.prototype.routes = function () {
-        var _this = this;
-        var router = express.Router();
-        router.get('/user/:user_id', function (req, res, next) {
+    routes() {
+        let router = express.Router();
+        router.get('/user/:user_id', (req, res, next) => {
             var id = req.params.user_id;
             console.log('Blog posts count with id: ' + id);
             //this.BlogPosts.retrieveBlogPostsCount(res, {user_id: id});
-            var query = _this.BlogPosts.find({ user_id: id });
-            query.exec(function (err, itemArray) {
+            var query = this.BlogPosts.find({ user_id: id });
+            query.exec((err, itemArray) => {
                 res.json(itemArray);
             });
         });
-        router.post('/blog_post', function (req, res) {
-            var id = crypto.randomBytes(16).toString("hex");
+        router.post('/blog_post', (req, res) => {
+            const id = crypto.randomBytes(16).toString("hex");
             console.log(req.body);
             var jsonObj = req.body;
             jsonObj.post_id = id;
-            _this.BlogPosts.model.create([jsonObj], function (err) {
+            this.BlogPosts.model.create([jsonObj], (err) => {
                 if (err) {
                     console.log('Blog post creation failed');
                 }
             });
             res.send('{"id":"' + id + '"}');
         });
-        router.get('/user/:user_id/:post_id', function (req, res) {
+        router.get('/user/:user_id/:post_id', (req, res) => {
             var id = req.params.post_id;
             console.log('Blog Post details with id: ' + id);
-            _this.BlogPosts.retrieveBlogPostsDetails(res, { post_id: id });
+            this.BlogPosts.retrieveBlogPostsDetails(res, { post_id: id });
         });
-        router.get('/one', function (req, res, next) {
+        router.get('/one', (req, res, next) => {
             res.send('request one');
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
         this.expressApp.use('/', express.static(__dirname + '/pages'));
-    };
-    return App;
-}());
+    }
+}
 exports.App = App;
 /* const express = require('express');
 const app = express();

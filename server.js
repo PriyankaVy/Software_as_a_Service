@@ -1,25 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Passport_1 = require("./Passport");
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var cors = require('cors');
-var passport = require('passport');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
-var path = require('path');
+const Passport_1 = require("./Passport");
+const UserModel_1 = require("./models/UserModel");
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const cors = require('cors');
+const passport = require('passport');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const path = require('path');
 // Import the routes
-var userRouter = require('./routes/users');
-var bpostRouter = require('./routes/blogPosts');
-var vpostRouter = require('./routes/vlogPosts');
-var cRouter = require('./routes/comments');
+const userRouter = require('./routes/users');
+const bpostRouter = require('./routes/blogPosts');
+const vpostRouter = require('./routes/vlogPosts');
+const cRouter = require('./routes/comments');
+const userModel = new UserModel_1.UserModel();
+const MyUser = userModel.model;
 // Use the routes
 app.use(express.json()); // Enable JSON parsing middleware
 app.use(cors());
 app.use(cookieParser());
 app.use(session({ secret: 'keyboard cat' }));
-var Googlepassport = new Passport_1.default();
+const Googlepassport = new Passport_1.default();
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', userRouter);
@@ -36,21 +39,22 @@ function validateAuth(req, res, next) {
     res.redirect('/');
 }
 app.get('/auth/google', passport.authenticate('google', { scope: ['Profile', 'email'] }));
-app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), function (req, res) {
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    session.user_id = "104928675914176513026";
     console.log("successfully authenticated user and returned to callback page.");
     console.log("redirecting to dashboard");
-    var token = 'GENERATED_TOKEN';
+    const token = 'GENERATED_TOKEN';
     res.redirect('/dashboard/main');
 });
-app.get('/logout', function (req, res) {
+app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'bloggers-room/index.html'));
 });
 // Start server
-var port = 8080;
-app.listen(process.env.PORT || port, function () {
-    console.log("Server listening at http://localhost:".concat(port));
+const port = 8080;
+app.listen(process.env.PORT || port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
 });

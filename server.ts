@@ -1,4 +1,5 @@
 import Passport from './Passport';
+import { UserModel } from './models/UserModel';
 
 const express = require('express');
 const app = express();
@@ -14,6 +15,9 @@ const userRouter = require('./routes/users');
 const bpostRouter = require('./routes/blogPosts');
 const vpostRouter = require('./routes/vlogPosts');
 const cRouter = require('./routes/comments')
+
+const userModel = new UserModel();
+const MyUser = userModel.model;
 
 // Use the routes
 app.use(express.json()); // Enable JSON parsing middleware
@@ -46,11 +50,14 @@ app.get('/auth/google/callback',
 passport.authenticate('google',
 { failureRedirect: '/'}),
 (req, res) => {
+  session.user_id = "104928675914176513026";
   console.log("successfully authenticated user and returned to callback page.");
   console.log("redirecting to dashboard");
   const token = 'GENERATED_TOKEN';
     res.redirect('/dashboard/main');
 });
+
+
 
 app.get('/logout', (req, res) => {
   req.logout();

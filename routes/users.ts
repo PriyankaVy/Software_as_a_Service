@@ -15,18 +15,7 @@ const isAuthenticated = (req, res, next) => {
   res.redirect('/bloggers-room');
 };
 
-// GET all MyUser documents
-router.get('/user', isAuthenticated, async (req, res) => {
-  try {
-    const user = {
-      username: req.user.displayName,
-      email: req.user.email
-    };
-    res.json(user);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+
 
 // GET a single MyUser document by ID
 router.get('/users/:user_id', async (req, res) => {

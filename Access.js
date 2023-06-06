@@ -1,23 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Access = void 0;
-var Mongoose = require("mongoose");
-var Access = /** @class */ (function () {
-    function Access() {
+const Mongoose = require("mongoose");
+class Access {
+    constructor() {
         Access.connect();
     }
-    Access.connect = function () {
+    static connect() {
         if (this.mongooseInstance)
             return this.mongooseInstance;
         this.mongooseConnection = Mongoose.connection;
-        this.mongooseConnection.on("open", function () {
+        this.mongooseConnection.on("open", () => {
             console.log("Connected to mongodb.");
         });
         this.mongooseInstance = Mongoose.connect(this.DB_CONNECTION_STRING);
         return this.mongooseInstance;
-    };
-    Access.DB_CONNECTION_STRING = 'mongodb://127.0.0.1:27017/BloggersRoom';
-    return Access;
-}());
+    }
+}
 exports.Access = Access;
+Access.DB_CONNECTION_STRING = 'mongodb+srv://prvysyaraju53:Atqcycgq0SfSRYTu@cluster0.icwqmqm.mongodb.net/BloggersRoom';
 Access.connect();

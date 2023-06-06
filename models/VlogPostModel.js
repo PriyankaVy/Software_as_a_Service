@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VlogPostModel = void 0;
-var Mongoose = require("mongoose");
-var Access_1 = require("../Access");
-var mongooseConnection = Access_1.Access.mongooseConnection;
-var mongooseObj = Access_1.Access.mongooseInstance;
-var VlogPostModel = /** @class */ (function () {
-    function VlogPostModel() {
+const Mongoose = require("mongoose");
+const Access_1 = require("../Access");
+let mongooseConnection = Access_1.Access.mongooseConnection;
+let mongooseObj = Access_1.Access.mongooseInstance;
+class VlogPostModel {
+    constructor() {
         this.createSchema();
         this.createModel();
     }
-    VlogPostModel.prototype.createSchema = function () {
+    createSchema() {
         this.schema = new Mongoose.Schema({
             author_id: String,
             image_url: String,
@@ -24,10 +24,9 @@ var VlogPostModel = /** @class */ (function () {
             likes: Number,
             dislikes: Number
         }, { collection: 'VlogPosts' });
-    };
-    VlogPostModel.prototype.createModel = function () {
+    }
+    createModel() {
         this.model = mongooseConnection.model("VlogPosts", this.schema);
-    };
-    return VlogPostModel;
-}());
+    }
+}
 exports.VlogPostModel = VlogPostModel;
