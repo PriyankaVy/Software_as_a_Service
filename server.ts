@@ -54,7 +54,7 @@ passport.authenticate('google',
   console.log("successfully authenticated user and returned to callback page.");
   console.log("redirecting to dashboard");
   const token = 'GENERATED_TOKEN';
-    res.redirect('https://bloggers-room.azurewebsites.net//dashboard/main');
+    res.redirect('https://bloggers-room.azurewebsites.net/dashboard/main');
 });
 
 
