@@ -49,7 +49,8 @@ function validateAuth(req, res, next) {
 }
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-    session.id = req.user.id;
+    const userId = req.user.id;
+    req.session.user_id = userId;
     console.log("successfully authenticated user and returned to callback page.");
     console.log("redirecting to dashboard");
     const token = 'GENERATED_TOKEN';
@@ -58,7 +59,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 app.get('/user', validateAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(session);
-        const user_id = session.id;
+        const user_id = req.session.user_id;
         const post = yield MyUser.find({ user_id: user_id });
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post document with this user' });
