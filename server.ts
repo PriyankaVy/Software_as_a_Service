@@ -58,7 +58,7 @@ app.get('/auth/google/callback',
 
   app.get('/user', async (req,res) => {
     try {
-      const user_id = session.id;
+      const user_id = session.user_id;
       const post = await MyUser.find({ user_id:user_id });
       if (post == null) {
         return res.status(404).json({ message: 'Cannot find post document with this user' });

@@ -56,7 +56,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 });
 app.get('/user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user_id = session.id;
+        const user_id = session.user_id;
         const post = yield MyUser.find({ user_id: user_id });
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post document with this user' });
